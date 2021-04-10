@@ -1,0 +1,26 @@
+.App {
+	font-family: sans-serif;
+	text-align: center;
+	background-color: grey;
+	color: midnightblue;
+}
+
+.grid-container {
+	display: grid;
+	grid-column-gap: 50px;
+	grid-row-gap: 10px;
+}
+
+.input-panel {
+	background-color: darkseagreen;
+}
+
+.output-panel {
+	background-color: darkseagreen;
+	color: black;
+}
+
+.btn {
+	background-color: darkgray;
+	color: midnightblue;
+}
