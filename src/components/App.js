@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles.css";
 import WordLengthInput from "./WordLengthInput";
 import InputRow from "./InputRow";
-//import listOfLists from "../ListOfLists.js";
+import listOfLists from "../listOfLists";
 
 export default function App() {
 	const [searchString, setSearchString] = useState("");
@@ -10,6 +10,7 @@ export default function App() {
 	const [wordLength, setWordLength] = useState(0);
 	const [clear, setClear] = useState(false);
 	const [searchStringError, setSearchStringError] = useState(false);
+	const [outputArray, setOutputArray] = useState([]);
 	const testArray = [
 		"abcdefghijklmnopqrstuvwxyz",
 		"abcdefghijklmnopqrstuvwxyz",
@@ -64,20 +65,27 @@ export default function App() {
 	//Functions for buttons:
 
 	//Lookup button
+	const wordSearch = (term, wordList) => {
+		const searchExpression = new RegExp(term);
+		setOutputArray(
+			wordList[term.length].filter((word) => searchExpression.test(word))
+		);
+	};
 
 	//Clear button
 	const clearInputs = (event) => {
 		event.preventDefault();
 		setClear(true);
+		setOutputArray([]);
 	};
 
 	useEffect(() => {
 		setClear(false);
 		initializeStringAndArray(wordLength);
 		setSearchStringError(false);
-	}, [clear]);
+	}, [clear, wordLength]);
 
-	//Clear button
+	//Reset button
 	const resetWordLength = (event) => {
 		event.preventDefault();
 		setWordLength(0);
@@ -112,7 +120,7 @@ export default function App() {
 					<button
 						type="button"
 						className="btn btn-primary m-2"
-						onClick={clearInputs}
+						onClick={() => wordSearch(searchString, listOfLists)}
 					>
 						Find Words
 					</button>
@@ -139,7 +147,7 @@ export default function App() {
 				<br />
 			</div>
 			<div className="output-panel container border border-2 border-success rounded">
-				<div className="row">{testArray.map(makeListEntry)}</div>
+				<div className="row">{outputArray.map(makeListEntry)}</div>
 			</div>
 		</div>
 	);
