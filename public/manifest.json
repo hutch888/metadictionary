@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Metadictionary",
+  "name": "Look up words by length and characters",
   "icons": [
     {
       "src": "favicon.ico",
