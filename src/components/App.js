@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles.css";
 import WordLengthInput from "./WordLengthInput";
 import InputRow from "./InputRow";
+import Footer from "./Footer";
 import listOfLists from "../listOfLists";
 
 export default function App() {
@@ -11,22 +12,6 @@ export default function App() {
 	const [clear, setClear] = useState(false);
 	const [searchStringError, setSearchStringError] = useState(false);
 	const [outputArray, setOutputArray] = useState([]);
-	const testArray = [
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-		"abcdefghijklmnopqrstuvwxyz",
-	];
 
 	//Functions for wordLengthInput:
 	const initializeStringAndArray = (length) => {
@@ -91,6 +76,7 @@ export default function App() {
 		setWordLength(0);
 		setInputArray([]);
 		setSearchString("");
+		setOutputArray([]);
 	};
 
 	//Functions for the output div:
@@ -99,56 +85,66 @@ export default function App() {
 	};
 
 	return (
-		<div className="App">
-			<br />
-			<div className="input-panel container rounded mb-2">
-				<h1>The Metadictionary </h1>
-				<p> Look up words by their length and any known letters</p>
-				<WordLengthInput
-					wordLength={wordLength}
-					setWordLength={setWordLength}
-					initializeStringAndArray={initializeStringAndArray}
-				/>
-				<InputRow
-					inputArray={inputArray}
-					updateSearchString={updateSearchString}
-					wordLength={wordLength}
-					clear={clear}
-				/>
-				{console.log(searchString)}
-				<div className="row justify-content-center m-3">
-					<button
-						type="button"
-						className="btn btn-primary m-2"
-						onClick={() => wordSearch(searchString, listOfLists)}
-					>
-						Find Words
-					</button>
-					<button
-						type="button"
-						className="btn btn-primary m-2"
-						onClick={clearInputs}
-					>
-						Clear Characters
-					</button>
-					<button
-						type="button"
-						className="btn btn-primary m-2"
-						onClick={resetWordLength}
-					>
-						Reset
-					</button>
+		<React.Fragment>
+			<div className="App">
+				<div className="app-container container-fluid">
+					<br />
+					<div className="row">
+						<div className="input-panel container rounded mb-2">
+							<h1>The Metadictionary </h1>
+							<p> Look up words by their length and any known letters</p>
+							<WordLengthInput
+								wordLength={wordLength}
+								setWordLength={setWordLength}
+								initializeStringAndArray={initializeStringAndArray}
+							/>
+							<InputRow
+								inputArray={inputArray}
+								updateSearchString={updateSearchString}
+								wordLength={wordLength}
+								clear={clear}
+							/>
+							<div className="row justify-content-center m-3">
+								<button
+									type="button"
+									className="btn btn-primary m-2"
+									onClick={() => wordSearch(searchString, listOfLists)}
+								>
+									Find Words
+								</button>
+								<button
+									type="button"
+									className="btn btn-primary m-2"
+									onClick={clearInputs}
+								>
+									Clear Characters
+								</button>
+								<button
+									type="button"
+									className="btn btn-primary m-2"
+									onClick={resetWordLength}
+								>
+									Reset
+								</button>
+							</div>
+						</div>
+						<h3 style={{ color: "midnightblue" }}>
+							{searchStringError
+								? "Each character should be a letter or a digit."
+								: null}
+						</h3>
+						<br />
+					</div>
+					<div classname="row">
+						<div className="output-panel container border border-2 border-success rounded">
+							<div className="row">{outputArray.map(makeListEntry)}</div>
+						</div>
+						<div classname="row">
+							<Footer />
+						</div>
+					</div>
 				</div>
-				<h3 style={{ color: "midnightblue" }}>
-					{searchStringError
-						? "Each character should be a letter or a digit."
-						: null}
-				</h3>
-				<br />
 			</div>
-			<div className="output-panel container border border-2 border-success rounded">
-				<div className="row">{outputArray.map(makeListEntry)}</div>
-			</div>
-		</div>
+		</React.Fragment>
 	);
 }
