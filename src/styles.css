@@ -7,14 +7,6 @@ body {
 	display: block;
 }
 
-footer {
-	background-color: grey;
-	display: block;
-	text-align: center;
-	height: 30px;
-	margin: 10px;
-}
-
 .app-container {
 	background-color: grey;
 	height: 90vh;
@@ -36,6 +28,10 @@ footer {
 	background-color: darkseagreen;
 }
 
+.input-warning {
+	color: "midnightblue";
+}
+
 .output-panel {
 	background-color: darkseagreen;
 	color: black;
@@ -43,7 +39,6 @@ footer {
 	min-height: 60vh;
 }
 
-.btn {
-	background-color: darkgray;
-	color: midnightblue;
+.footer {
+	text-align: center;
 }

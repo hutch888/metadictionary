@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "../styles.css";
 import WordLengthInput from "./WordLengthInput";
 import InputRow from "./InputRow";
+import Button from "./Button";
+import InputWarning from "./InputWarning";
+import OutputList from "./OutputList";
 import Footer from "./Footer";
 import listOfLists from "../listOfLists";
 
@@ -79,11 +82,6 @@ export default function App() {
 		setOutputArray([]);
 	};
 
-	//Functions for the output div:
-	const makeListEntry = (word) => {
-		return <div className="col col-md-6 col-lg-4">{word}</div>;
-	};
-
 	return (
 		<React.Fragment>
 			<div className="App">
@@ -105,44 +103,27 @@ export default function App() {
 								clear={clear}
 							/>
 							<div className="row justify-content-center m-3">
-								<button
-									type="button"
-									className="btn btn-primary m-2"
-									onClick={() => wordSearch(searchString, listOfLists)}
-								>
-									Find Words
-								</button>
-								<button
-									type="button"
-									className="btn btn-primary m-2"
-									onClick={clearInputs}
-								>
-									Clear Characters
-								</button>
-								<button
-									type="button"
-									className="btn btn-primary m-2"
-									onClick={resetWordLength}
-								>
-									Reset
-								</button>
+								<Button
+									activatesFunction={() =>
+										wordSearch(searchString, listOfLists)
+									}
+									buttonLabel={"Find Words"}
+								/>
+								<Button
+									activatesFunction={clearInputs}
+									buttonLabel={"Clear Characters"}
+								/>
+								<Button
+									activatesFunction={resetWordLength}
+									buttonLabel={"Reset"}
+								/>
 							</div>
 						</div>
-						<h3 style={{ color: "midnightblue" }}>
-							{searchStringError
-								? "Each character should be a letter or a digit."
-								: null}
-						</h3>
 						<br />
 					</div>
-					<div classname="row">
-						<div className="output-panel container border border-2 border-success rounded">
-							<div className="row">{outputArray.map(makeListEntry)}</div>
-						</div>
-						<div classname="row">
-							<Footer />
-						</div>
-					</div>
+					<InputWarning error={searchStringError} />
+					<OutputList outputArray={outputArray} />
+					<Footer />
 				</div>
 			</div>
 		</React.Fragment>
