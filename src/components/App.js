@@ -90,7 +90,12 @@ export default function App() {
 					<div className="row">
 						<div className="input-panel container rounded mb-2">
 							<h1>The Metadictionary </h1>
-							<p> Look up words by their length and any known letters</p>
+							<p> Look up words by their length and any known letters.</p>
+							<p>
+								{" "}
+								The input is case-sensitive. Use capital letters for proper
+								names and acronyms.
+							</p>
 							<WordLengthInput
 								wordLength={wordLength}
 								setWordLength={setWordLength}
