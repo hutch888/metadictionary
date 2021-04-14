@@ -32,7 +32,7 @@ To set up a local instance of this app, you'll need [Node.js](https://nodejs.org
   ```
   > npm install
   ```
-    <br/>
+
   When that finishes, type
   
   ```
