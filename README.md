@@ -1,6 +1,6 @@
 # The Metadictionary
 
-Given a length and zero or more characters, this app returns a list of English words that match those criteria.
+Given a length and zero or more characters, this app returns a list of English words that match those criteria. You can see a live version of The Metadictionary [here](https://hutch888.github.io/metadictionary/).
 
 ## Setup
 
