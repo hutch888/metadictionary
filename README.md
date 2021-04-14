@@ -1,6 +1,7 @@
 # The Metadictionary
 
-Given a length and zero or more characters, this app returns a list of English words that match those criteria. It takes digits and is case-sensitive: use capital letters to find proper names and acronyms.
+Given a length and zero or more characters, this app returns a list of English words that match those criteria. <br/>
+It takes digits and is case-sensitive: use capital letters to find proper names and acronyms.<br/>
 You can see a live version of The Metadictionary [here](https://hutch888.github.io/metadictionary/).
 
 ## Setup
